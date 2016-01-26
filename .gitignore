@@ -1,0 +1,5 @@
+go/**/bin/
+pkg/
+
+vendor/bin/
+vendor/pkg/
