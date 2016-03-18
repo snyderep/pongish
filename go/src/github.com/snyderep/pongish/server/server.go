@@ -1,9 +1,9 @@
 package server
 
 import (
-	//"github.com/gorilla/handlers"
-	"github.com/gorilla/mux"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 // HandlerProvider provides all HTTP handlers.
@@ -37,9 +37,6 @@ func (s *Server) Listen() error {
 	http.Handle(s.StaticPrefix, http.StripPrefix(s.StaticPrefix, http.FileServer(http.Dir(s.StaticRoot))))
 
 	// handle everything else
-	// http.Handle("/",
-	// 	handlers.RecoveryHandler()(handlers.CompressHandler(router)))
-
 	http.Handle("/", router)
 
 	return http.ListenAndServe(s.Address, nil)
@@ -47,7 +44,6 @@ func (s *Server) Listen() error {
 
 func (s *Server) setupRoutes() (*mux.Router, error) {
 	r := mux.NewRouter()
-	//r.Methods("GET")
 
 	r.HandleFunc("/", s.Provider.homeHandler)
 

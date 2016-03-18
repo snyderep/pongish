@@ -4,11 +4,12 @@ package main
 
 import (
 	"fmt"
+	"strings"
+	"time"
+
 	"github.com/gopherjs/websocket"
 	"honnef.co/go/js/console"
 	"honnef.co/go/js/dom"
-	"strings"
-	"time"
 )
 
 type gateway struct {

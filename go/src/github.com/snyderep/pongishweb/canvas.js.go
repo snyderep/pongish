@@ -4,11 +4,12 @@ package main
 
 import (
 	"fmt"
-	"honnef.co/go/js/console"
-	"honnef.co/go/js/dom"
 	"math"
 	"math/rand"
 	"time"
+
+	//"honnef.co/go/js/console"
+	"honnef.co/go/js/dom"
 )
 
 const (
@@ -190,7 +191,7 @@ func (c *canvas) checkPaddleCollision() {
 		return
 	}
 
-	// If the ball is in the vicinity of where the paddle couldbe then do some more fancy collision detection.
+	// If the ball is in the vicinity of where the paddle could be then do some more fancy collision detection.
 	// First check to see if the ball already hit the paddle.
 	if (!c.pddl.hit) && ((c.side == "LEFT" && c.bll.xPos < (c.bll.radius+c.pddl.xPos+c.pddl.width+10)) ||
 		(c.side == "RIGHT" && c.bll.xPos > (c.pddl.xPos-c.bll.radius-10))) {

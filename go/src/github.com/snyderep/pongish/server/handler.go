@@ -1,11 +1,12 @@
 package server
 
 import (
+	"log"
+	"net/http"
+
 	"github.com/gorilla/sessions"
 	"github.com/gorilla/websocket"
 	"github.com/rs/xid"
-	"log"
-	"net/http"
 )
 
 var store = sessions.NewCookieStore([]byte("BqEKmLBysSblvwtoB4G8VjIu"))
@@ -61,7 +62,8 @@ func (p *PongishHandlerProvider) gameHandler(w http.ResponseWriter, r *http.Requ
 
 	if err := addPlayer(c); err != nil {
 		log.Printf("error adding player: %s\n", err)
-		return
+		c.Close()
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
 

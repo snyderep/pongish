@@ -28433,8 +28433,8 @@ $packages["github.com/snyderep/pongishweb"] = (function() {
 			c.handleKeyUp($assertType(event, ptrType$3));
 		}));
 		$go((function $b() {
-			var $ptr, _r, _r$1, _r$2, deg, rad, speed, ticker, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $ptr = $f.$ptr; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; deg = $f.deg; rad = $f.rad; speed = $f.speed; ticker = $f.ticker; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			var $ptr, _r, _r$1, deg, rad, speed, ticker, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $ptr = $f.$ptr; _r = $f._r; _r$1 = $f._r$1; deg = $f.deg; rad = $f.rad; speed = $f.speed; ticker = $f.ticker; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 			ticker = time.NewTicker(new time.Duration(0, 16000000));
 			/* while (true) { */ case 1:
 				_r = $recv(ticker.C); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
@@ -28458,15 +28458,16 @@ $packages["github.com/snyderep/pongishweb"] = (function() {
 							deg = 360 + deg;
 						}
 						speed = math.Floor(c.bll.xMovement / math.Cos(rad) + 0.5);
-						_r$1 = fmt.Sprintf("rad: %v, deg: %v. speed: %v\n", new sliceType([new $Float64(rad), new $Float64(deg), new $Float64(speed)])); /* */ $s = 11; case 11: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-						$r = console.Log(new sliceType([new $String(_r$1)])); /* */ $s = 12; case 12: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-						_r$2 = fmt.Sprintf("N,%d,%d,%d", new sliceType([new $Int(c.bll.yPos), new $Int((deg >> 0)), new $Int((speed >> 0))])); /* */ $s = 13; case 13: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-						$r = $send(c.event, _r$2); /* */ $s = 14; case 14: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+						if (speed < 2) {
+							speed = 2;
+						}
+						_r$1 = fmt.Sprintf("N,%d,%d,%d", new sliceType([new $Int(c.bll.yPos), new $Int((deg >> 0)), new $Int((speed >> 0))])); /* */ $s = 11; case 11: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+						$r = $send(c.event, _r$1); /* */ $s = 12; case 12: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 						c.bll = ptrType$1.nil;
 					/* } */ case 10:
 				/* } */ case 6:
 			/* } */ $s = 1; continue; case 2:
-			/* */ $s = -1; case -1: } return; } if ($f === undefined) { $f = { $blk: $b }; } $f.$ptr = $ptr; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f.deg = deg; $f.rad = rad; $f.speed = speed; $f.ticker = ticker; $f.$s = $s; $f.$r = $r; return $f;
+			/* */ $s = -1; case -1: } return; } if ($f === undefined) { $f = { $blk: $b }; } $f.$ptr = $ptr; $f._r = _r; $f._r$1 = _r$1; $f.deg = deg; $f.rad = rad; $f.speed = speed; $f.ticker = ticker; $f.$s = $s; $f.$r = $r; return $f;
 		}), []);
 		return c;
 	};

@@ -3,14 +3,16 @@
 package main
 
 import (
+	"image/color"
+
 	"github.com/gopherjs/gopherjs/js"
 	"honnef.co/go/js/dom"
-	"image/color"
 )
 
 // copied from https://github.com/Archs/js/blob/master/canvas/canvas.go
 
 type imageData struct {
+	// ref: https://github.com/gopherjs/gopherjs/blob/master/js/js.go
 	*js.Object
 	// ImageData.data Read only
 	// Is a Uint8ClampedArray representing a one-dimensional array containing the data in the RGBA order, with integer values between 0 and 255 (included).
@@ -49,14 +51,10 @@ func (i *imageData) anyBlue() bool {
 // The CanvasRenderingContext2D.getImageData() method of the Canvas 2D API returns an ImageData object
 // representing the underlying pixel data for the area of the canvas
 // denoted by the rectangle which starts at (sx, sy) and has an sw width and sh height.
-//   sx
-//    The x coordinate of the upper left corner of the rectangle from which the ImageData will be extracted.
-//   sy
-//   	The y coordinate of the upper left corner of the rectangle from which the ImageData will be extracted.
-//   sw
-//   	The width of the rectangle from which the ImageData will be extracted.
-//   sh
-//   	The height of the rectangle from which the ImageData will be extracted.
+// x The x coordinate of the upper left corner of the rectangle from which the ImageData will be extracted.
+// y The y coordinate of the upper left corner of the rectangle from which the ImageData will be extracted.
+// width The width of the rectangle from which the ImageData will be extracted.
+// height The height of the rectangle from which the ImageData will be extracted.
 func getImageData(ctx *dom.CanvasRenderingContext2D, x, y, width, heigth int) *imageData {
 	o := ctx.Call("getImageData", x, y, width, heigth)
 	return &imageData{Object: o}

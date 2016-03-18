@@ -3,13 +3,14 @@ package server
 import (
 	"container/list"
 	"fmt"
-	"github.com/gorilla/websocket"
 	"log"
 	"math/rand"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/gorilla/websocket"
 )
 
 type stateT uint8
@@ -45,7 +46,7 @@ type courtT struct {
 }
 
 func newCourt() *courtT {
-	waitList := newWaitListT(64)
+	waitList := newWaitListT(256)
 	court := &courtT{waiters: waitList}
 
 	go func() {
